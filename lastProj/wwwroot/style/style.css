@@ -1,0 +1,10 @@
+﻿.card.cardStyle{
+    margin: 15px;
+    
+    
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+}

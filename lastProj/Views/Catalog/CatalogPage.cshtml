@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "CatalogPage";
+}
+<body  >
+    <h1>CatalogPage</h1>
+    <select id="CategoryId">
+        <option value="" disabled hidden selected>Select Category</option>
+        <option value="0">All</option>
+        @foreach (var category in ViewBag.Category)
+        {
+            <option value="@category.CategoryId">@category.CategoryName</option>
+        }
+
+    </select>
+
+    <div class="catalogBlock">
+        @foreach (var animal in Model)
+        {
+            <div class="card " style="width: 18rem;">
+                <img src=@animal.PictureSrc class="card-img-top" alt="@animal.Name" />
+                <div class="card-body"></div>
+                <ul class="list-group list-group-flus-rounded">
+                    <li class="list-group-item">Name: @animal.Name</li>
+                    <li class="list-group-item">Type: @animal.Type</li>
+                    <li class="list-group-item">Age: @animal.Age</li>
+                </ul>
+                <div class="card-body btn btn-warning">
+                    <a asp-controller="Catalog" asp-action="ShowDetails" asp-route-name="@animal.Name">Details </a>
+                </div>
+            </div>
+        }
+    </div>
+
+    <script>
+        $(function () {
+            $("select").on("input", function () {
+                let selectedValue = $("#CategoryId").val();
+                window.location.href = "/Catalog/ShowByCategory/" + selectedValue;
+            });
+        });
+    </script>
+</body>

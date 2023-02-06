@@ -1,0 +1,65 @@
+﻿@using lastProj.Models
+@model Animal
+
+@{
+    ViewBag.Title = "EditAnimal";
+}
+
+<h1>EditPage</h1>
+
+<h1>Index</h1>
+
+<div class="AddForm">
+    <form class="RegistrationForm" method="post" asp-action="EditPage">
+        <div class="form-control border-success">
+                        <label asp-for="AnimalId"></label>
+            <input asp-for="AnimalId" placeholder="@Model.AnimalId" name="Id" disabled style="width : 80px" />
+            <span asp-validation-for="AnimalId"></span>
+            <div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" style="width : 80px" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div>
+                <label asp-for="Type"></label>
+                <input asp-for="Type" style="width : 80px" />
+                <span asp-validation-for="Type"></span>
+            </div>
+            <div>
+                <label asp-for="CategoryId"></label>
+                <select asp-for=CategoryId>
+                    <option name="" disabled hidden selected>Select Category</option>
+                    @foreach (var category in ViewBag.Category)
+                    {
+                        <option name="CategoryId" value="@category.CategoryId">@category.CategoryName</option>
+                    }
+                </select>
+                <span asp-validation-for="CategoryId"></span>
+            </div>
+            <div>
+                <label asp-for="Age"></label>
+                <input asp-for="Age" />
+                <span asp-validation-for="Age"></span>
+            </div>
+            <div>
+                <label asp-for="PictureSrc"></label>
+                <input asp-for="PictureSrc" />
+                <span asp-validation-for="PictureSrc"></span>
+            </div>
+            <div>
+                <label asp-for="Description"></label>
+                <input asp-for="Description" />
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div>
+                <input type="submit" value="Update" />
+                <a asp-controller="Admin" asp-action="EditPage" asp-route-Id="@Model.AnimalId"></a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+

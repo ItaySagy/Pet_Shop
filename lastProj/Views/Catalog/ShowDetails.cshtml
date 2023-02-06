@@ -1,0 +1,46 @@
+﻿@using lastProj.Models
+@model Animal
+
+
+@{
+    ViewBag.Title = "ShowDetails";
+}
+<link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.css.map" rel="stylesheet" />
+<link href="/bootstrap/css/bootstrap.min.css.map" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.rtl.css.map" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.rtl.min.css.map" rel="stylesheet" />
+
+<body >
+    <div class="col-md-3">
+        <img src=@ViewBag.Animal.PictureSrc class="card-img-top img-responsive" alt="@ViewBag.Animal.Name"  />
+        <h3>@ViewBag.Animal.Name</h3>
+        <label>Age: </label>
+        <span>@ViewBag.Animal.Age</span>
+        <br>
+        <lable>Description: </lable>
+        <p>@ViewBag.Animal.Description</p>
+    </div>
+
+    <h2>Comments</h2>
+    <div class="petComments">
+        @foreach (var c in ViewBag.Comments)
+        {
+            <p><b>-</b>@c.Comments</p>
+        }
+
+        <form asp-controller="Catalog" asp-action="AddComment" class="nav-link" aria-current="page">
+            <div>
+                <label name="str"><b>Add new comment:</b> </label>
+                <input type="text" name="newComment" placeholder="New Comment">
+                <input type="hidden" name="animalid" value="@ViewBag.Animal.AnimalId">
+                <input type="submit" />
+                <a asp-controller="Catalog" asp-action="AddComment"></a>
+                <span asp-validation-for="Comments"></span>
+            </div>
+        </form>
+    </div>
+</body>

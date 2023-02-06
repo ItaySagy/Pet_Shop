@@ -1,0 +1,57 @@
+﻿@model lastProj.Models.Animal
+
+@{
+    ViewBag.Title = "CreateAnimal";
+}
+
+
+<h1>Index</h1>
+<div class="AddForm">
+    <form class="RegistrationForm" method="post" asp-controller="Admin" asp-action="SaveAnimal">
+        <div class="form-control border-success">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" placeholder="Name" style="width : 80px" />
+            <span asp-validation-for="Name"></span>
+            <div>
+                <label asp-for="Type"></label>
+                <input asp-for="Type" placeholder="Type" style="width : 80px" />
+                <span asp-validation-for="Type"></span>
+            </div>
+            <div>
+                <label asp-for="CategoryId"></label>
+                <select asp-for=CategoryId>
+                    <option name="" disabled hidden selected>Select Category</option>
+                    @foreach (var category in ViewBag.Category)
+                    {
+                        <option name="CategoryId" value="@category.CategoryId">@category.CategoryName</option>
+                    }
+                </select>
+                <span asp-validation-for="CategoryId"></span>
+            </div>
+            <div>
+                <label asp-for="Age"></label>
+                <input asp-for="Age" placeholder="Age" />
+                <span asp-validation-for="Age"></span>
+            </div>
+            <div>
+                <label asp-for="PictureSrc"></label>
+                <input asp-for="PictureSrc" placeholder="Image URL adress" />
+                <span asp-validation-for="PictureSrc"></span>
+            </div>
+            <div>
+                <label asp-for="Description"></label>
+                <input asp-for="Description" placeholder="Description" />
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div>
+                <input type="submit" />
+
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+

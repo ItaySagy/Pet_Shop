@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "HomePage";
+}
+
+<h1>HomePage</h1>
+<link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.css.map" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.min.css.map" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.rtl.css.map" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.rtl.min.css.map" rel="stylesheet" />
+
+<div class="container">
+    @foreach (var animal in ViewBag.TopTwo)
+    {
+        <div class="table" style="width: 18rem;">
+            <img src=@animal.PictureSrc class="card-img-top" alt="@animal.Name" />
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Name: @animal.Name</li>
+                    <li class="list-group-item">Type: @animal.Type</li>
+                    <li class="list-group-item">Age: @animal.Age</li>
+                </ul>
+                <div class="card-body">
+                    <a asp-controller="Catalog" asp-action="ShowDetails" asp-route-name="@animal.Name">Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

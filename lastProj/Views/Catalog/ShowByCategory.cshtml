@@ -1,0 +1,45 @@
+﻿@model lastProj.Models.Category
+@{
+    ViewData["Title"] = "ShowByCategory";
+}
+
+<h1>ShowByCategory</h1>
+<link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.css.map" rel="stylesheet" />
+<link href="/bootstrap/css/bootstrap.min.css.map" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.rtl.css.map" rel="stylesheet" />
+<link href="~/bootstrap/css/bootstrap.rtl.min.css.map" rel="stylesheet" />
+
+<div >
+    <select class="form-select-sm btn btn-warning" id="catSelect">
+        @{
+            <option name="" disabled hidden selected>Select Category</option>
+            foreach (var category in ViewBag.Category)
+            {
+                <option value="@category.CategoryId" name="id">@category.CategoryName</option>
+                <a asp-controller="Catalog" asp-action="ShowByCategory" asp-route-id="@category.CategoryId">Details</a>
+
+            }
+        }
+    </select>
+
+    @foreach (var animal in ViewBag.Animals)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src=@animal.PictureSrc class="card-img-top" alt="@animal.Name" />
+            <div class="card-body"></div>
+            <ul class="list-group list-group-flus-rounded">
+                <li class="list-group-item">Name: @animal.Name</li>
+                <li class="list-group-item">Type: @animal.Type</li>
+                <li class="list-group-item">Age: @animal.Age</li>
+            </ul>
+            <div>
+                <a asp-controller="Catalog" asp-action="ShowByCategory" asp-route-id="@animal.CategoryId">Details</a>
+            </div>
+        </div>
+    }
+</div>
+
